@@ -3,8 +3,8 @@
 
 - Target is *Internal* (as opposed to *Extension*)
 
-| Todos | Priority | URL  |
-| :---- | :------: | *--- |
+| Todos | Priority |
+| :---- | :------: |
 | Test web services
 | Convert BH
 | Barcode creator
@@ -12,4 +12,6 @@
 | File access, blobs | 1
 | TableFilter data type | 1
 | Enumerate object numbers in VS Code | 1
-| Sign app file | | [https://docs.microsoft.com/en-us/dynamics365/business-central/dev-itpro/developer/devenv-sign-extension]
+| Sign app file
+
+Signing: https://docs.microsoft.com/en-us/dynamics365/business-central/dev-itpro/developer/devenv-sign-extension
