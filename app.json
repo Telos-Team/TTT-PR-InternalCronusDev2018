@@ -10,7 +10,7 @@
   "EULA": "http://telosteam.dk/UseAtYourOwnRisk",
   "help": "http://telosteam.dk/Help",
   "url": "http://telosteam.dk/TTTPR",
-  "logo": "",
+  "logo": "./res/logo.png",
   "capabilities": [],
   "dependencies": [],
   "screenshots": [],
