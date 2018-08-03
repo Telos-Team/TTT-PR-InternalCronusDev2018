@@ -1,0 +1,27 @@
+{
+  "id": "4d1de2c0-9b2f-499c-bf72-47fc9c1baff8",
+  "name": "TTTPR Internal Cronus Dev 2018",
+  "publisher": "Telos Team - Preben Rasmussen",
+  "brief": "Hands off!",
+  "description": "This is MY stuff!",
+  "version": "1.0.0.0",
+  "compatibilityId": "1.0.0.0",
+  "privacyStatement": "http://telosteam.dk/Privacy",
+  "EULA": "http://telosteam.dk/UseAtYourOwnRisk",
+  "help": "http://telosteam.dk/Help",
+  "url": "http://telosteam.dk/TTTPR",
+  "logo": "",
+  "capabilities": [],
+  "dependencies": [],
+  "screenshots": [],
+  "platform": "11.0.0.0",
+  "application": "11.0.0.0",
+  "idRange": {
+    "from": 50000,
+    "to": 99999
+  },
+  "target": "Internal",
+  "features": "TranslationFile",
+  "showMyCode": false,
+  "locale" : "W1"
+}
