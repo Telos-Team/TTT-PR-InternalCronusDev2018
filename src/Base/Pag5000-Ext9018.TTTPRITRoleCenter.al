@@ -65,6 +65,24 @@ pageextension 50000 "TTTPR IT Role Center" extends "Administrator Role Center"
                     Image = "Table";
                     RunObject = page "TTTPRObjectRunner";
                 }
+                action("TableFilterExampleSimpleSections")
+                {
+                    Caption = 'Show Table Filter (Simple)';
+                    ToolTip = 'Show the simple Table Filter example';
+                    ApplicationArea = All;
+                    Image = "Table";
+                    RunObject = page "TTTPRTableFilterExampleSimple";
+                    RunPageMode = Edit;
+                }
+                action("TableFilterExampleRecRefSections")
+                {
+                    Caption = 'Show Table Filter (RecRef)';
+                    ToolTip = 'Show the RecordRef Table Filter example';
+                    ApplicationArea = All;
+                    Image = "Table";
+                    RunObject = page "TTTPRTableFilterExampleRecRef";
+                    RunPageMode = Edit;
+                }
             }
         }
     }

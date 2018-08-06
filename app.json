@@ -20,6 +20,7 @@
     "from": 50000,
     "to": 99999
   },
+  "target": "Extension",
   "target": "Internal",
   "features": "TranslationFile",
   "showMyCode": false,

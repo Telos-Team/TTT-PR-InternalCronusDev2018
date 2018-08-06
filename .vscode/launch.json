@@ -9,7 +9,9 @@
             "port": 11004,
             "serverInstance": "Cronus_Dev_2018",
             "authentication": "Windows",
-            "startupObjectId": 9018
+            "startupObjectId": 9018,
+            "schemaUpdateMode": "Recreate",
+            "schemaUpdateMode": "Synchronize"
         }
     ]
 }
