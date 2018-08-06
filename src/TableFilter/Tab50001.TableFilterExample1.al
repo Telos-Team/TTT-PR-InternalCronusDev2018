@@ -1,5 +1,6 @@
 table 50001 TTTPRTableFilterExample1
 {
+    Caption = 'Table Filter Example 1';
     DataClassification = ToBeClassified;
     
     fields
@@ -38,7 +39,6 @@ table 50001 TTTPRTableFilterExample1
     }
     
     var
-        myInt : Integer;
 
     trigger OnInsert();
     begin

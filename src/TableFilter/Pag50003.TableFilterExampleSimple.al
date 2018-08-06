@@ -4,12 +4,7 @@ page 50003 TTTPRTableFilterExampleSimple
     InstructionalText = 'Just a simple example - easy to copy from!';
     PageType = List;
     SourceTable = TTTPRTableFilterExample1;
-    UsageCategory = Administration;
-    ApplicationArea = All;
-    DataCaptionFields = ObjectID, ObjectName;
-    AutoSplitKey = true;
-    DelayedInsert = true;
-
+    
     layout
     {
         area(content)

@@ -22,16 +22,16 @@ pageextension 50000 "TTTPR IT Role Center" extends "Administrator Role Center"
         {
             group(TTTPRMainGroupProcessing)
             {
-                Caption = 'TTTPR';
+                Caption = 'TTTPR', Comment = 'Dont translate this!', Locked = true;
                 ToolTip = 'TTTPR functionality';
 
                 group(TTTPRGroupProcessing)
                 {
-                    Caption = 'TTTPR';
+                    Caption = 'TTTPR', Comment = 'Dont translate this!', Locked = true;
                     ToolTip = 'TTTPR functionality';
                     Image = WorkCenter;
 
-                    group(Objects)
+                    group(ObjectsGroupProcessing)
                     {
                         Caption = 'Objects';
                         ToolTip = 'Object functionality';
@@ -44,6 +44,48 @@ pageextension 50000 "TTTPR IT Role Center" extends "Administrator Role Center"
                             ApplicationArea = All;
                             Image = "Table";
                             RunObject = page "TTTPRObjectRunner";
+                        }
+                    }
+                    group(TableFilterGroupProcessing)
+                    {
+                        Caption = 'Table Filter';
+                        ToolTip = 'Table Filter functionality';
+                        Image = SuggestTables;
+
+                        action("TableFilterSimpleProcessing")
+                        {
+                            Caption = 'Table Filter Simple';
+                            ToolTip = 'Show Simple Table Filter';
+                            ApplicationArea = All;
+                            Image = "Table";
+                            RunObject = page TTTPRTableFilterExampleSimple;
+                            RunPageMode = Edit;
+                       }
+                        action("TableFilterRecRefProcessing")
+                        {
+                            Caption = 'Table Filter RecRef';
+                            ToolTip = 'Show RecRef Table Filter';
+                            ApplicationArea = All;
+                            Image = "Table";
+                            RunObject = page TTTPRTableFilterExampleRecRef;
+                            RunPageMode = Edit;
+                        }
+                    }
+                    
+                    group(Translation)
+                    {
+                        Caption = 'Translation';
+                        ToolTip = 'Translation functionality';
+                        Image = SuggestTables;
+
+                        action("TranslationWorksheetProcessing")
+                        {
+                            Caption = 'Show Translation Worksheet';
+                            ToolTip = 'Show the Translation Worksheet';
+                            ApplicationArea = All;
+                            Image = "Table";
+                            RunObject = page TTTPRTranslationWorksheet;
+                            RunPageMode = Edit;
                         }
                     }
                 }
@@ -65,6 +107,7 @@ pageextension 50000 "TTTPR IT Role Center" extends "Administrator Role Center"
                     Image = "Table";
                     RunObject = page "TTTPRObjectRunner";
                 }
+
                 action("TableFilterExampleSimpleSections")
                 {
                     Caption = 'Show Table Filter (Simple)';
@@ -83,6 +126,17 @@ pageextension 50000 "TTTPR IT Role Center" extends "Administrator Role Center"
                     RunObject = page "TTTPRTableFilterExampleRecRef";
                     RunPageMode = Edit;
                 }
+
+                action("TranslationSections")
+                {
+                    Caption = 'Show Translation Worksheet';
+                    ToolTip = 'Show the Translation Worksheet';
+                    ApplicationArea = All;
+                    Image = "Table";
+                    RunObject = page TTTPRTranslationWorksheet;
+                    RunPageMode = Edit;
+                }
+
             }
         }
     }
