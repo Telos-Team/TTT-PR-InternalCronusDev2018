@@ -68,8 +68,15 @@ table 50000 TTTPRObjectRunner
     var
         locrecAllObjWithCaption : Record AllObjWithCaption;
     begin
+        if parvarrecObject.GetFilter(ObjectType) <> '' then begin
+            locrecAllObjWithCaption.SetFilter("Object Type", parvarrecObject.GetFilter(ObjectType));
+        end;
+        if parvarrecObject.GetFilter(ObjectID) <> '' then begin
+            locrecAllObjWithCaption.SetFilter("Object ID", parvarrecObject.GetFilter(ObjectID));
+        end;
         clear(parvarrecObject);
         parvarrecObject.DeleteAll(false);
+
         locrecAllObjWithCaption.FindSet;
         repeat
             parvarrecObject.ObjectType := locrecAllObjWithCaption."Object Type";
@@ -149,4 +156,18 @@ table 50000 TTTPRObjectRunner
         locrecField.SetRange(TableNo, ObjectID);
         page.run(page::fields, locrecField);
     end;
+
+    procedure SetFilterNormal();
+    begin
+        rec.SetFilter(ObjectID, '%1..%2|%3..%4', 1, 49999, 10000, 1999999999);
+    end;
+    procedure SetFilterDev();
+    begin
+        rec.SetRange(ObjectID, 50000, 99999);
+    end;
+    procedure SetFilterSysVirt();
+    begin
+        rec.SetFilter(ObjectID, '%1..', 2000000000);
+    end;
+
 }

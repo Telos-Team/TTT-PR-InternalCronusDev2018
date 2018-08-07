@@ -18,10 +18,10 @@
   "application": "11.0.0.0",
   "idRange": {
     "from": 50000,
-    "to": 99999
+    "to": 59999
   },
-  "target": "Extension",
   "target": "Internal",
+  "target": "Extension",
   "features": "TranslationFile",
   "showMyCode": false,
   "locale" : "W1"

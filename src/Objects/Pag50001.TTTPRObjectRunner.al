@@ -4,14 +4,28 @@ page 50001 "TTTPRObjectRunner"
     PageType = List;
     SourceTable = TTTPRObjectRunner;
     SourceTableTemporary = true;
-    Editable = false;
+    Editable = true;
     UsageCategory = Administration;
     ApplicationArea = All;
+    PromotedActionCategories = 'New, Process, Report, Filters, 5, 6, 7, 8, 9, 10';
 
     layout
     {
         area(content)
         {
+            group(General)
+            {
+                field(ObjectTypeSelector;optObjectTypeSelector)
+                {
+                    ApplicationArea = All;
+                    AssistEdit = true;
+
+                    trigger OnValidate();
+                    begin
+                        CallFillTable();
+                    end;
+                }
+            }
             repeater(Group)
             {
                 field(ObjectTypeName;ObjectTypeName)
@@ -53,7 +67,6 @@ page 50001 "TTTPRObjectRunner"
                 Promoted = true;
                 PromotedCategory = Process;
                 PromotedIsBig = true;
-                PromotedOnly = true;
                 trigger OnAction();
                 begin
                     RunObject();
@@ -67,17 +80,90 @@ page 50001 "TTTPRObjectRunner"
                 Promoted = true;
                 PromotedCategory = Process;
                 PromotedIsBig = true;
-                PromotedOnly = true;
                 trigger OnAction();
                 begin
                     ShowFieldList();
                 end;
             }
+            group(FilterActions)
+            {
+                Caption = 'Filter Objects';
+                ToolTip = 'Set filters on objects';
+                action(SetFilterNormal)
+                {
+                    Caption = 'Normal Objects';
+                    ToolTip = 'Show only normal objects';
+                    ApplicationArea = All;
+                    Promoted = true;
+                    PromotedCategory = Category4;
+                    PromotedIsBig = true;
+                    trigger OnAction();
+                    begin
+                        SetFilterNormal();
+                    end;
+                }
+                action(SetFilterDev)
+                {
+                    Caption = 'Dev Objects';
+                    ToolTip = 'Show only dev objects';
+                    ApplicationArea = All;
+                    Promoted = true;
+                    PromotedCategory = Category4;
+                    PromotedIsBig = true;
+                    trigger OnAction();
+                    begin
+                        SetFilterDev();
+                    end;
+                }
+                action(SetFilterSysVirt)
+                {
+                    Caption = 'System/Virtual Objects';
+                    ToolTip = 'Show only system/virtual objects';
+                    ApplicationArea = All;
+                    Promoted = true;
+                    PromotedCategory = Category4;
+                    PromotedIsBig = true;
+                    trigger OnAction();
+                    begin
+                        SetFilterSysVirt();
+                    end;
+                }
+                action(actConstructGetSystemVirtualTableVariantAL)
+                {
+                    Caption = 'Get RecordID';
+                    ToolTip = 'Get RecordID for current record';
+                    Promoted = true;
+                    PromotedIsBig = true;
+                    PromotedOnly = true;
+                    PromotedCategory = Process;
+                    Image = ShowSelected;
+                    trigger OnAction();
+                    var
+                        loccuObjMgt : Codeunit TTTPRObjectManagement;
+                    begin
+                        loccuObjMgt.ConstructGetSystemVirtualTableVariantAL();
+                    end;
+                }
+            }
         }
     }
 
+    var
+        recObjectTypeSelector : Record AllObjWithCaption;
+        optObjectTypeSelector : Option " ", TableData, Table, , Report, , Codeunit, XmlPort, MenuSuite, Page, Query, System, FieldNumber;
+
     trigger OnOpenPage();
     begin
+        CallFillTable();
+    end;
+
+    local procedure CallFillTable();
+    var
+    begin
+        if optObjectTypeSelector <> optObjectTypeSelector::" " then
+            rec.SetRange(ObjectType, optObjectTypeSelector - 1)
+        else 
+            rec.setrange(ObjectType);
         FillTable(rec);
     end;
 }

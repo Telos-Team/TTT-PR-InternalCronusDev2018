@@ -28,6 +28,7 @@
 | Translation | Crap...
 | Functions [External]
 | Labels ctr. TextContants
+| Dates: yyyymmddD
 
 ### Links:
 | Name | Link | Comment |
@@ -45,4 +46,5 @@
 | Multilanguage properties | Use XLIFF files
 | Certain file manipulations
 | Field name and size changes (destructive changes)
+| File.Open and most functions in codeunit "File Management"
 

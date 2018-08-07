@@ -281,7 +281,6 @@ page 50002 "TTTPRSysVirtTblInspector"
 
         rrTable.Close();
         rrTable.Open(parintTableNo);
-        
         tmprrTable.Close();
         tmprrTable.Open(parintTableNo, true);
         tmprrTable.Reset();
