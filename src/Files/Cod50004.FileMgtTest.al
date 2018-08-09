@@ -1,5 +1,8 @@
 codeunit 50004 TTTPRFileMgtTest
 {
+    Description = 'TTTPR';
+    Subtype = Normal;
+
     trigger OnRun();
     begin
         // TestorUploadIntoStream();

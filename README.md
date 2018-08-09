@@ -40,11 +40,11 @@
 | Limitation | Comment |
 | :--------- | :------ |
 | Pages on system / virtual tables
-| RecRef.Open() on system / virtual table numbers | Can use named variable and GetTable
-| Dotnet variables
-| Dotnet Control-Add-ins
+| RecRef.Open() on system / virtual table numbers | Can use named variable and GetTable or RecordID, lots can't be used
+| Dotnet variables | Use replacement types (JSON, XML, TextBuilder) or Azure Functions
+| Dotnet Control-Add-ins | Use javascript add-ins
 | Multilanguage properties | Use XLIFF files
 | Certain file manipulations
-| Field name and size changes (destructive changes)
-| File.Open and most functions in codeunit "File Management"
+| Field name and size changes (destructive changes) | Use Obsolete
+| File.Open and most functions in codeunit "File Management" | Use stream and/or Azure Storage
 

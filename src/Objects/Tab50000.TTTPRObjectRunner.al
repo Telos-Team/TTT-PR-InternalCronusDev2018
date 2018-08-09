@@ -68,12 +68,10 @@ table 50000 TTTPRObjectRunner
     var
         locrecAllObjWithCaption : Record AllObjWithCaption;
     begin
-        if parvarrecObject.GetFilter(ObjectType) <> '' then begin
+        if parvarrecObject.GetFilter(ObjectType) <> '' then
             locrecAllObjWithCaption.SetFilter("Object Type", parvarrecObject.GetFilter(ObjectType));
-        end;
-        if parvarrecObject.GetFilter(ObjectID) <> '' then begin
+        if parvarrecObject.GetFilter(ObjectID) <> '' then
             locrecAllObjWithCaption.SetFilter("Object ID", parvarrecObject.GetFilter(ObjectID));
-        end;
         clear(parvarrecObject);
         parvarrecObject.DeleteAll(false);
 

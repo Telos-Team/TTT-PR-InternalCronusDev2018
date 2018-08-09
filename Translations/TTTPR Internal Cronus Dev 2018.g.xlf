@@ -3,6 +3,11 @@
   <file datatype="xml" source-language="en-US" original="TTTPR Internal Cronus Dev 2018">
     <body>
       <group id="body">
+        <trans-unit id="Codeunit 446327484 - Method 775907828 - NamedType 4064503539" maxWidth="999" size-unit="char" translate="yes" xml:space="preserve">
+          <source>https://tttpr-functionapp.azurewebsites.net/api/HelloWorld</source>
+          <note from="Developer" annotates="general" priority="2" />
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit - Label</note>
+        </trans-unit>
         <trans-unit id="PageExtension 780518952 - Action 3973435944 - Property 2879900210" maxWidth="999" size-unit="char" translate="yes" xml:space="preserve">
           <source>Show Object Runner</source>
           <note from="Developer" annotates="general" priority="2" />

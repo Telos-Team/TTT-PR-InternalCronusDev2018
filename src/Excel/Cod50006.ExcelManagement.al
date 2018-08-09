@@ -1,5 +1,8 @@
 codeunit 50006 TTTPRExcelManagement
 {
+    Description = 'TTTPR';
+    Subtype = Normal;
+
     trigger OnRun();
     begin
         TestorLoadClientExcel();

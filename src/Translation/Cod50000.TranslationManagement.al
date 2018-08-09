@@ -1,5 +1,8 @@
 codeunit 50000 TTTPRTranslationManagement
 {
+    Description = 'TTTPR';
+    Subtype = Normal;
+
     trigger OnRun();
     begin
     end;
