@@ -4,6 +4,8 @@ codeunit 50008 TTTPRAzureFunctionsSimple
     Subtype = Normal;
 
     // https://tttpr-functionapp.azurewebsites.net 
+    // http://robertmayer.se/2016/04/19/azure-function-app-to-send-emails/
+
 
     trigger OnRun();
     begin
@@ -19,15 +21,14 @@ codeunit 50008 TTTPRAzureFunctionsSimple
         lochttpResponse : HttpResponseMessage;
         lochttpHeaders : HttpHeaders;
         locjsonObject : JsonObject;
-        locjsonToken : JsonToken;
         locbooPostResult : Boolean;
         locbooReadResult : Boolean;
+        loctxtRequest : Text;
         loctxtReturnValue : Text;
     begin
         locjsonObject.Add('hello', 'WORLD!');
-        locjsonToken := locjsonObject.AsToken();
-        //lochttpContent.WriteFrom(locjsonToken);
-        lochttpContent.WriteFrom('{"helo":"WORLD!"}');
+        locjsonObject.WriteTo(loctxtRequest);
+        lochttpContent.WriteFrom(loctxtRequest);
         lochttpContent.GetHeaders(lochttpHeaders);
         lochttpHeaders.Remove('content-type');
         lochttpHeaders.Add('content-type', 'application/json');
@@ -35,6 +36,6 @@ codeunit 50008 TTTPRAzureFunctionsSimple
         lochttpContent := lochttpResponse.Content();
         locbooReadResult := lochttpContent.ReadAs(loctxtReturnValue);
         locbooPostResult :=not  locbooPostResult;
-        message('Post: %1\Read: %2\Value: %3', locbooPostResult, locbooReadResult, loctxtReturnValue);
+        message('Post: %1\Read: %2\Request: %3\Response: %4', locbooPostResult, locbooReadResult, loctxtRequest, loctxtReturnValue);
     end;
 }
