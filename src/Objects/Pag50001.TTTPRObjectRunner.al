@@ -1,4 +1,4 @@
-page 50001 "TTTPRObjectRunner"
+page 50001 "TTTPRObjectRunnerList"
 {
     Caption = 'Object Runner';
     PageType = List;
@@ -15,7 +15,7 @@ page 50001 "TTTPRObjectRunner"
         {
             group(General)
             {
-                field(ObjectTypeSelector;optObjectTypeSelector)
+                field(ObjectTypeSelector; optObjectTypeSelector)
                 {
                     ApplicationArea = All;
                     AssistEdit = true;
@@ -28,23 +28,23 @@ page 50001 "TTTPRObjectRunner"
             }
             repeater(Group)
             {
-                field(ObjectTypeName;ObjectTypeName)
+                field(ObjectTypeName; ObjectTypeName)
                 {
                     ApplicationArea = All;
                 }
-                field(ObjectID;ObjectID)
+                field(ObjectID; ObjectID)
                 {
                     ApplicationArea = All;
                 }
-                field(ObjectName;ObjectName)
+                field(ObjectName; ObjectName)
                 {
                     ApplicationArea = All;
                 }
-                field(ObjectCaption;ObjectCaption)
+                field(ObjectCaption; ObjectCaption)
                 {
                     ApplicationArea = All;
                 }
-                field(ObjectSubType;ObjectSubType)
+                field(ObjectSubType; ObjectSubType)
                 {
                     ApplicationArea = All;
                 }
@@ -139,7 +139,7 @@ page 50001 "TTTPRObjectRunner"
                     Image = ShowSelected;
                     trigger OnAction();
                     var
-                        loccuObjMgt : Codeunit TTTPRObjectManagement;
+                        loccuObjMgt: Codeunit TTTPRObjectManagement;
                     begin
                         loccuObjMgt.ConstructGetSystemVirtualTableVariantAL();
                     end;
@@ -149,8 +149,8 @@ page 50001 "TTTPRObjectRunner"
     }
 
     var
-        recObjectTypeSelector : Record AllObjWithCaption;
-        optObjectTypeSelector : Option " ", TableData, Table, , Report, , Codeunit, XmlPort, MenuSuite, Page, Query, System, FieldNumber;
+        recObjectTypeSelector: Record AllObjWithCaption;
+        optObjectTypeSelector: Option " ", TableData, Table, , Report, , Codeunit, XmlPort, MenuSuite, Page, Query, System, FieldNumber;
 
     trigger OnOpenPage();
     begin
@@ -162,7 +162,7 @@ page 50001 "TTTPRObjectRunner"
     begin
         if optObjectTypeSelector <> optObjectTypeSelector::" " then
             rec.SetRange(ObjectType, optObjectTypeSelector - 1)
-        else 
+        else
             rec.setrange(ObjectType);
         FillTable(rec);
     end;

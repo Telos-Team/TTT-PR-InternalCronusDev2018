@@ -1,22 +1,22 @@
-page 50003 TTTPRTableFilterExampleSimple
+page 50003 "TTTPRTableFilterExampleSimple"
 {
     Caption = 'Table Filter Example, Simple';
     InstructionalText = 'Just a simple example - easy to copy from!';
     PageType = List;
     SourceTable = TTTPRTableFilterExample1;
-    
+
     layout
     {
         area(content)
         {
             repeater(Group)
             {
-                field(LineNo;LineNo)
+                field(LineNo; LineNo)
                 {
                     Visible = false;
                     ApplicationArea = All;
                 }
-                field(ObjectID;ObjectID)
+                field(ObjectID; ObjectID)
                 {
                     ApplicationArea = All;
                     LookupPageId = "All Objects with Caption";
@@ -25,18 +25,18 @@ page 50003 TTTPRTableFilterExampleSimple
                         CalcFields(ObjectName);
                     end;
                 }
-                field(ObjectName;ObjectName)
+                field(ObjectName; ObjectName)
                 {
                     ApplicationArea = All;
                 }
-                field(FilterString;FilterString)
+                field(FilterString; FilterString)
                 {
                     ApplicationArea = All;
                     AssistEdit = true;
                     trigger OnAssistEdit();
                     var
-                        locrecTableFilter : Record "Table Filter";
-                        locpagTableFilter : Page "Table Filter";
+                        locrecTableFilter: Record "Table Filter";
+                        locpagTableFilter: Page "Table Filter";
                     begin
                         TestField(ObjectID);
                         CalcFields(ObjectName);

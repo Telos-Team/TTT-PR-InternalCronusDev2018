@@ -3,7 +3,7 @@ page 50002 "TTTPRSysVirtTblInspector"
     PageType = List;
     SourceTable = Integer;
     Editable = false;
-    SourceTableView = where(Number = filter(1..));
+    SourceTableView = where (Number = filter (1 ..));
     Caption = 'System/Virtual Table Inspector';
 
     layout
@@ -35,7 +35,7 @@ page 50002 "TTTPRSysVirtTblInspector"
             repeater(Group)
             {
                 Caption = 'Lines';
-                field(LineNo;Number)
+                field(LineNo; Number)
                 {
                     Caption = 'Line No.';
                 }
@@ -235,15 +235,15 @@ page 50002 "TTTPRSysVirtTblInspector"
     }
 
     var
-        tmprecFields : Record Field temporary;
-        rrTable : RecordRef;
-        tmprrTable : RecordRef;
-        intTableNo : Integer;
-        intLastRecNo : Integer;
-        intRecCount : Integer;
-        txtTableName : Text;
-        txtTableCaption : Text;
-        booUseCaptionName : Boolean;
+        tmprecFields: Record Field temporary;
+        rrTable: RecordRef;
+        tmprrTable: RecordRef;
+        intTableNo: Integer;
+        intLastRecNo: Integer;
+        intRecCount: Integer;
+        txtTableName: Text;
+        txtTableCaption: Text;
+        booUseCaptionName: Boolean;
 
     trigger OnOpenPage();
     var
@@ -254,13 +254,13 @@ page 50002 "TTTPRSysVirtTblInspector"
 
     local procedure SelectTable();
     var
-        locrecAllObjWithCaption : Record AllObjWithCaption;
+        locrecAllObjWithCaption: Record AllObjWithCaption;
     begin
         if locrecAllObjWithCaption.get(locrecAllObjWithCaption."Object Type"::table, intTableNo) then;
         locrecAllObjWithCaption.SetRange("Object Type", locrecAllObjWithCaption."Object Type"::Table);
         locrecAllObjWithCaption.SetFilter("Object ID", '%1..', 2000000000);
         if page.RunModal(page::Objects, locrecAllObjWithCaption) <> action::LookupOK then
-          exit;
+            exit;
         PrepareTable(locrecAllObjWithCaption."Object ID");
         CurrPage.Update(false);
     end;
@@ -271,9 +271,9 @@ page 50002 "TTTPRSysVirtTblInspector"
         CurrPage.Update(false);
     end;
 
-    procedure PrepareTable(parintTableNo : Integer);
+    procedure PrepareTable(parintTableNo: Integer);
     var
-        locmiCurrent : ModuleInfo;
+        locmiCurrent: ModuleInfo;
     begin
         Clear(Rec);
         SetFilter(Number, '%1..', 1);
@@ -285,7 +285,7 @@ page 50002 "TTTPRSysVirtTblInspector"
         tmprrTable.Open(parintTableNo, true);
         tmprrTable.Reset();
         tmprrTable.DeleteAll(false);
-        
+
         intTableNo := rrTable.Number;
         intRecCount := rrTable.Count;
         txtTableName := rrTable.Name;
@@ -294,9 +294,9 @@ page 50002 "TTTPRSysVirtTblInspector"
         PopulateFieldsTable(parintTableNo);
     end;
 
-    local procedure PopulateFieldsTable(parintTableNo : Integer);
+    local procedure PopulateFieldsTable(parintTableNo: Integer);
     var
-        locrecFields : Record Field;
+        locrecFields: Record Field;
     begin
         Clear(tmprecFields);
         tmprecFields.DeleteAll(false);
@@ -304,44 +304,44 @@ page 50002 "TTTPRSysVirtTblInspector"
         locrecFields.FindSet;
         repeat
             tmprecFields := locrecFields;
-            tmprecFields.Insert(false);
+        tmprecFields.Insert(false);
         until locrecFields.Next = 0;
     end;
 
-    local procedure GetFieldFromIndex(parintFieldIndex : Integer) : Boolean;
+    local procedure GetFieldFromIndex(parintFieldIndex: Integer): Boolean;
     begin
         Clear(tmprecFields);
         if parintFieldIndex > tmprecfields.Count then
-          exit(false);
+            exit(false);
         if tmprecFields.Next(parintFieldIndex) = parintFieldIndex then
             exit(true);
         clear(tmprecFields);
     end;
 
-    local procedure GetFieldHeader(parintTableNo : Integer; parintFieldIndex : Integer) : Text;
+    local procedure GetFieldHeader(parintTableNo: Integer; parintFieldIndex: Integer): Text;
     begin
         if not GetFieldFromIndex(parintFieldIndex) then
             exit(StrSubstNo('(%1)', parintFieldIndex));
         if booUseCaptionName then
             exit(tmprecFields."Field Caption")
-        else  
+        else
             exit(tmprecFields.FieldName);
     end;
 
-    local procedure GetFieldVisible(parintTableNo : Integer; parintFieldIndex : Integer) : Boolean;
+    local procedure GetFieldVisible(parintTableNo: Integer; parintFieldIndex: Integer): Boolean;
     begin
         if GetFieldFromIndex(parintFieldIndex) then
-            exit(tmprecFields.Enabled);    
+            exit(tmprecFields.Enabled);
     end;
 
-    local procedure GetFieldValue(parintTableNo : Integer; parintFieldIndex : Integer; parintRecNo : Integer) : Text;
+    local procedure GetFieldValue(parintTableNo: Integer; parintFieldIndex: Integer; parintRecNo: Integer): Text;
     var
-        locrecField : record Field;
-        frField : FieldRef;
-        frFieldFrom : FieldRef;
-        frFieldTo : FieldRef;
-        locintNext : Integer;
-        locintNextResult : Integer;
+        locrecField: record Field;
+        frField: FieldRef;
+        frFieldFrom: FieldRef;
+        frFieldTo: FieldRef;
+        locintNext: Integer;
+        locintNextResult: Integer;
     begin
         if not GetFieldFromIndex(parintFieldIndex) then
             exit('');
@@ -357,10 +357,10 @@ page 50002 "TTTPRSysVirtTblInspector"
                 tmprecfields.findset;
                 repeat
                     frFieldFrom := rrTable.Field(tmprecfields."No.");
-                    frFieldTo := tmprrTable.Field(tmprecfields."No.");
-                    if (tmprecFields.Class = tmprecFields.Class::FlowField) or (tmprecFields.Type = tmprecFields.Type::BLOB) then
-                        frFieldFrom.CalcField();
-                    frFieldTo.Value := frFieldFrom.Value;
+                frFieldTo := tmprrTable.Field(tmprecfields."No.");
+                if(tmprecFields.Class = tmprecFields.Class::FlowField) or(tmprecFields.Type = tmprecFields.Type::BLOB) then
+                    frFieldFrom.CalcField();
+                frFieldTo.Value := frFieldFrom.Value;
                 until tmprecFields.Next = 0;
                 tmprrTable.Insert(false);
                 tmprecFields.Reset();
@@ -372,7 +372,7 @@ page 50002 "TTTPRSysVirtTblInspector"
         frField := tmprrTable.FieldIndex(parintFieldIndex);
         intLastRecNo := parintRecNo;
         tmprecFields := locrecField;
-        exit(format(frField.Value));    
+        exit(format(frField.Value));
     end;
 
 }

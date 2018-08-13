@@ -1,4 +1,4 @@
-page 50004 TTTPRTableFilterExampleRecRef
+page 50004 "TTTPRTableFilterExampleRecRef"
 {
     Caption = 'Table Filter Example, RecRef';
     InstructionalText = 'Here I want to try to use a TableFilter field using RecRef - if possible!';
@@ -16,12 +16,12 @@ page 50004 TTTPRTableFilterExampleRecRef
         {
             repeater(Group)
             {
-                field(LineNo;LineNo)
+                field(LineNo; LineNo)
                 {
                     Visible = false;
                     ApplicationArea = All;
                 }
-                field(ObjectID;ObjectID)
+                field(ObjectID; ObjectID)
                 {
                     ApplicationArea = All;
                     LookupPageId = "All Objects with Caption";
@@ -30,18 +30,18 @@ page 50004 TTTPRTableFilterExampleRecRef
                         CalcFields(ObjectName);
                     end;
                 }
-                field(ObjectName;ObjectName)
+                field(ObjectName; ObjectName)
                 {
                     ApplicationArea = All;
                 }
-                field(FilterString;FilterString)
+                field(FilterString; FilterString)
                 {
                     ApplicationArea = All;
                     AssistEdit = true;
                     trigger OnAssistEdit();
                     var
-                        locrecTableFilter : Record "Table Filter";
-                        locpagTableFilter : Page "Table Filter";
+                        locrecTableFilter: Record "Table Filter";
+                        locpagTableFilter: Page "Table Filter";
                     begin
                         TestField(ObjectID);
                         CalcFields(ObjectName);

@@ -14,7 +14,7 @@ pageextension 50000 "TTTPR IT Role Center" extends "Administrator Role Center"
                 ApplicationArea = All;
                 Caption = 'Show Object Runner';
                 ToolTip = 'Show the Object Runner List';
-                RunObject = Page "TTTPRObjectRunner";
+                RunObject = Page "TTTPRObjectRunnerList";
             }
         }
 
@@ -43,7 +43,7 @@ pageextension 50000 "TTTPR IT Role Center" extends "Administrator Role Center"
                             ToolTip = 'Show the Object Runner List';
                             ApplicationArea = All;
                             Image = "Table";
-                            RunObject = page "TTTPRObjectRunner";
+                            RunObject = page "TTTPRObjectRunnerList";
                         }
                     }
                     group(TableFilterGroupProcessing)
@@ -60,7 +60,7 @@ pageextension 50000 "TTTPR IT Role Center" extends "Administrator Role Center"
                             Image = "Table";
                             RunObject = page TTTPRTableFilterExampleSimple;
                             RunPageMode = Edit;
-                       }
+                        }
                         action("TableFilterRecRefProcessing")
                         {
                             Caption = 'Table Filter RecRef';
@@ -71,7 +71,7 @@ pageextension 50000 "TTTPR IT Role Center" extends "Administrator Role Center"
                             RunPageMode = Edit;
                         }
                     }
-                    
+
                     group(Translation)
                     {
                         Caption = 'Translation';
@@ -91,7 +91,7 @@ pageextension 50000 "TTTPR IT Role Center" extends "Administrator Role Center"
                 }
             }
         }
-        
+
         addfirst(Sections)
         {
             group(TTTPRGroupSections)
@@ -105,7 +105,7 @@ pageextension 50000 "TTTPR IT Role Center" extends "Administrator Role Center"
                     ToolTip = 'Show the Object Runner List';
                     ApplicationArea = All;
                     Image = "Table";
-                    RunObject = page "TTTPRObjectRunner";
+                    RunObject = page "TTTPRObjectRunnerList";
                 }
 
                 action("TableFilterExampleSimpleSections")
@@ -140,7 +140,7 @@ pageextension 50000 "TTTPR IT Role Center" extends "Administrator Role Center"
             }
         }
     }
-    
+
     var
-        myInt : Integer;
+        myInt: Integer;
 }

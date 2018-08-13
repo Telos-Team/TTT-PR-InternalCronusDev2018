@@ -2,31 +2,31 @@ table 50004 TTTPRTranslatedLine
 {
     Caption = 'TTTPR Translated Line';
     DataClassification = CustomerContent;
-    
+
     fields
     {
-        field(1;TranslationCode;Code[20])
+        field(1; TranslationCode; Code[20])
         {
             Caption = 'Translation Code';
             DataClassification = CustomerContent;
             TableRelation = TTTPRTranslationProject;
         }
-        field(2;TranslationLineNo;Integer)
+        field(2; TranslationLineNo; Integer)
         {
             Caption = 'Translation Line No.';
             DataClassification = CustomerContent;
         }
-        field(3;TargetLanguage;Text[10])
+        field(3; TargetLanguage; Text[10])
         {
             Caption = 'Target Language';
             DataClassification = ToBeClassified;
         }
-        field(4;TargetContent;Blob)
+        field(4; TargetContent; Blob)
         {
             Caption = 'Target Content';
             DataClassification = CustomerContent;
         }
-        field(5;TargetText;Text[250])
+        field(5; TargetText; Text[250])
         {
             Caption = 'Target Text';
             DataClassification = CustomerContent;
@@ -35,12 +35,12 @@ table 50004 TTTPRTranslatedLine
 
     keys
     {
-        key(PK;TranslationCode, TranslationLineNo, TargetLanguage)
+        key(PK; TranslationCode, TranslationLineNo, TargetLanguage)
         {
             Clustered = true;
         }
     }
-    
+
     var
 
     trigger OnInsert();

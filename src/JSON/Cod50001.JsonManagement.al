@@ -8,13 +8,13 @@ codeunit 50002 TTTPRJsonManagement
         TestSimpleJsonObject();
         TestSimpleJsonArray();
     end;
-    
+
     var
 
     local procedure TestSimpleJsonObject();
     var
-        locjsonObject : JsonObject;
-        loctxtValue : Text;
+        locjsonObject: JsonObject;
+        loctxtValue: Text;
     begin
         locjsonObject.Add('Hello', 'World');
         locjsonObject.Add('Hi', 'there');
@@ -24,10 +24,10 @@ codeunit 50002 TTTPRJsonManagement
 
     local procedure TestSimpleJsonArray();
     var
-        locjsonObject : JsonObject;
-        locjsonObject2 : JsonObject;
-        locjsonArray : JsonArray;
-        loctxtValue : Text;
+        locjsonObject: JsonObject;
+        locjsonObject2: JsonObject;
+        locjsonArray: JsonArray;
+        loctxtValue: Text;
     begin
         locjsonObject.Add('Hello', 'World');
         locjsonObject.Add('Hi', 'there');
@@ -35,7 +35,7 @@ codeunit 50002 TTTPRJsonManagement
 
         locjsonObject2.Add('Once', 'again');
         locjsonArray.Add(locjsonObject2);
-        
+
         locjsonArray.WriteTo(loctxtValue);
         message('Value: %1', loctxtValue);
     end;

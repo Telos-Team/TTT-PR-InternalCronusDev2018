@@ -5,26 +5,26 @@ codeunit 50003 TTTPRXmlManagement
         // TestorLoadClientXml();
         TestorCreateXml();
     end;
-    
+
     var
-    
+
     local procedure TestorLoadClientXml();
     var
-        locxmlDoc : XmlDocument;
-        locbooOK : Boolean;
+        locxmlDoc: XmlDocument;
+        locbooOK: Boolean;
     begin
         locbooOK := LoadClientXml(locxmlDoc);
         // Message('%1', format(xmlDoc));
         Message('LoadXml:\%1, %2', locbooOK, locxmlDoc.GetChildNodes.Count);
     end;
 
-    local procedure LoadClientXml(var parvarxmlDoc : XmlDocument) : Boolean;
+    local procedure LoadClientXml(var parvarxmlDoc: XmlDocument): Boolean;
     var
-        loclblDialogTitle : Label 'Please select XML file', Comment = 'This is the title shown on the upload dialog';
-        loclblFromFilter : Label '', Comment = 'This is the filter used when selecting file to upload';
-        loctxtFromFolder : Text;
-        loctxtClientFilename : Text;
-        locstrmXml : InStream;
+        loclblDialogTitle: Label 'Please select XML file', Comment = 'This is the title shown on the upload dialog';
+        loclblFromFilter: Label '', Comment = 'This is the filter used when selecting file to upload';
+        loctxtFromFolder: Text;
+        loctxtClientFilename: Text;
+        locstrmXml: InStream;
     begin
         loctxtClientFilename := '';
         if not UploadIntoStream(loclblDialogTitle, loctxtFromFolder, loclblFromFilter, loctxtClientFilename, locstrmXml) then
@@ -36,35 +36,36 @@ codeunit 50003 TTTPRXmlManagement
 
     local procedure TestorCreateXml();
     var
-        locxmlDoc : XmlDocument;
-        locbooOK : Boolean;
-        loctxtXml : Text;
+        locxmlDoc: XmlDocument;
+        locbooOK: Boolean;
+        loctxtXml: Text;
     begin
         locbooOK := CreateXml(locxmlDoc);
         Message('CreateXml:\%1, %2', locbooOK, locxmlDoc.GetChildNodes.Count);
         if locxmlDoc.WriteTo(loctxtXml) then
             message('%1', loctxtXml);
     end;
-    local procedure CreateXml(var parvarxmlDoc : XmlDocument) : Boolean;
+
+    local procedure CreateXml(var parvarxmlDoc: XmlDocument): Boolean;
     var
-        locxmlRoot : XmlElement;
-        locxmlAttribute : XmlAttribute;
-        locxmlAttributeCollection : XmlAttributeCollection;
-        locxmlCData : XmlCData;
-        locxmlComment : XmlComment;
-        locxmlDecl : XmlDeclaration;
-        locxmlDocumentType : XmlDocumentType;
-        locxmlElem : XmlElement;
-        locxmlElemText : XmlElement;
-        locxmlElemAttrib : XmlElement;
-        locxmlNamespaceManager : XmlNamespaceManager;
-        locxmlNameTable : XmlNameTable;
-        locxmlNode : XmlNode;
-        locxmlNodeList : XmlNodeList;
-        locxmlProcessingInstruction :XmlProcessingInstruction;
-        locxmlReadOptions : XmlReadOptions;
-        locxmlText : XmlText;
-        locxmlWriteOptions : XmlWriteOptions;
+        locxmlRoot: XmlElement;
+        locxmlAttribute: XmlAttribute;
+        locxmlAttributeCollection: XmlAttributeCollection;
+        locxmlCData: XmlCData;
+        locxmlComment: XmlComment;
+        locxmlDecl: XmlDeclaration;
+        locxmlDocumentType: XmlDocumentType;
+        locxmlElem: XmlElement;
+        locxmlElemText: XmlElement;
+        locxmlElemAttrib: XmlElement;
+        locxmlNamespaceManager: XmlNamespaceManager;
+        locxmlNameTable: XmlNameTable;
+        locxmlNode: XmlNode;
+        locxmlNodeList: XmlNodeList;
+        locxmlProcessingInstruction: XmlProcessingInstruction;
+        locxmlReadOptions: XmlReadOptions;
+        locxmlText: XmlText;
+        locxmlWriteOptions: XmlWriteOptions;
     begin
         clear(parvarxmlDoc);
 
@@ -103,10 +104,10 @@ codeunit 50003 TTTPRXmlManagement
         locxmlElem := XmlElement.Create('FirstNode', '', 'Value');
         if not locxmlRoot.Add(locxmlElem) then
             exit(false);
-        
+
         // CData
         locxmlCData := XmlCData.Create('CData section with <xml>content</xml>...æøå ÆØÅ');
-        if not locxmlRoot.Add(locxmlCData) then 
+        if not locxmlRoot.Add(locxmlCData) then
             exit(false);
 
         // Text

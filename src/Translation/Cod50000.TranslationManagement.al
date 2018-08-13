@@ -6,7 +6,7 @@ codeunit 50000 TTTPRTranslationManagement
     trigger OnRun();
     begin
     end;
-    
+
     var
 
     local procedure ImportXliff();

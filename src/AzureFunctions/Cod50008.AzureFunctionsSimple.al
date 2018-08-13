@@ -11,20 +11,20 @@ codeunit 50008 TTTPRAzureFunctionsSimple
     begin
         TestSimpleHelloWorld()
     end;
-    
+
     var
     local procedure TestSimpleHelloWorld();
     var
-        loclblUrl : label 'https://tttpr-functionapp.azurewebsites.net/api/HelloWorld';
-        lochttpContent : HttpContent;
-        lochttpClient : HttpClient;
-        lochttpResponse : HttpResponseMessage;
-        lochttpHeaders : HttpHeaders;
-        locjsonObject : JsonObject;
-        locbooPostResult : Boolean;
-        locbooReadResult : Boolean;
-        loctxtRequest : Text;
-        loctxtReturnValue : Text;
+        loclblUrl: label 'https://tttpr-functionapp.azurewebsites.net/api/HelloWorld';
+        lochttpContent: HttpContent;
+        lochttpClient: HttpClient;
+        lochttpResponse: HttpResponseMessage;
+        lochttpHeaders: HttpHeaders;
+        locjsonObject: JsonObject;
+        locbooPostResult: Boolean;
+        locbooReadResult: Boolean;
+        loctxtRequest: Text;
+        loctxtReturnValue: Text;
     begin
         locjsonObject.Add('hello', 'WORLD!');
         locjsonObject.WriteTo(loctxtRequest);
@@ -35,7 +35,7 @@ codeunit 50008 TTTPRAzureFunctionsSimple
         locbooPostResult := lochttpClient.Post(loclblUrl, lochttpContent, lochttpResponse);
         lochttpContent := lochttpResponse.Content();
         locbooReadResult := lochttpContent.ReadAs(loctxtReturnValue);
-        locbooPostResult :=not  locbooPostResult;
+        locbooPostResult := not locbooPostResult;
         message('Post: %1\Read: %2\Request: %3\Response: %4', locbooPostResult, locbooReadResult, loctxtRequest, loctxtReturnValue);
     end;
 }

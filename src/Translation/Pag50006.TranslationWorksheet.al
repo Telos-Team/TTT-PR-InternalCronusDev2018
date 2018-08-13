@@ -9,38 +9,38 @@ page 50006 TTTPRTranslationWorksheet
     InsertAllowed = false;
     DeleteAllowed = false;
     Editable = true;
-    
+
     layout
     {
         area(content)
         {
             group(General)
             {
-                field(TargetLanguageFilter;TargetLanguageFilter)
+                field(TargetLanguageFilter; TargetLanguageFilter)
                 {
                     ApplicationArea = All;
                 }
             }
             repeater(Group)
             {
-                field(TranslationCode;TranslationCode)
+                field(TranslationCode; TranslationCode)
                 {
                     Visible = false;
                     ApplicationArea = All;
                 }
-                field(SourceContentString;txtSourceContentString)
+                field(SourceContentString; txtSourceContentString)
                 {
                     ApplicationArea = All;
                 }
-                field(TargetContentString;txtTargetContentString)
+                field(TargetContentString; txtTargetContentString)
                 {
                     ApplicationArea = All;
                 }
-                field(TargetTranslationFound;TargetTranslationFound)
+                field(TargetTranslationFound; TargetTranslationFound)
                 {
                     ApplicationArea = All;
                 }
-               
+
             }
         }
         area(factboxes)
@@ -62,9 +62,9 @@ page 50006 TTTPRTranslationWorksheet
     }
 
     var
-        txtTargetLanguage : Text[10];
-        txtSourceContentString : Text;
-        txtTargetContentString : Text;
+        txtTargetLanguage: Text[10];
+        txtSourceContentString: Text;
+        txtTargetContentString: Text;
 
     trigger OnOpenPage();
     var

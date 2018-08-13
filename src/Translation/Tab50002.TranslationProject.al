@@ -2,20 +2,20 @@ table 50002 TTTPRTranslationProject
 {
     Caption = 'Translation Project';
     DataClassification = CustomerContent;
-    
+
     fields
     {
-        field(1;Code;Code[20])
+        field(1; Code; Code[20])
         {
             Caption = 'Code';
             DataClassification = CustomerContent;
         }
-        field(2;Description;Code[50])
+        field(2; Description; Code[50])
         {
             Caption = 'Description';
             DataClassification = ToBeClassified;
         }
-        field(3;SourceLanguage;Text[10])
+        field(3; SourceLanguage; Text[10])
         {
             Caption = 'Source Language';
             DataClassification = ToBeClassified;
@@ -24,14 +24,14 @@ table 50002 TTTPRTranslationProject
 
     keys
     {
-        key(PK;Code)
+        key(PK; Code)
         {
             Clustered = true;
         }
     }
-    
+
     var
-        myInt : Integer;
+        myInt: Integer;
 
     trigger OnInsert();
     begin
@@ -43,8 +43,8 @@ table 50002 TTTPRTranslationProject
 
     trigger OnDelete();
     var
-        locrecTranslationLine : Record TTTPRTranslationLine;
-        locrecTranslatedLine : Record TTTPRTranslatedLine;
+        locrecTranslationLine: Record TTTPRTranslationLine;
+        locrecTranslatedLine: Record TTTPRTranslatedLine;
     begin
         locrecTranslationLine.SetRange(TranslationCode, Code);
         locrecTranslationLine.DeleteAll(true);
