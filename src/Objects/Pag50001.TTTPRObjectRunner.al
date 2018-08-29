@@ -130,8 +130,8 @@ page 50001 "TTTPRObjectRunnerList"
                 }
                 action(actConstructGetSystemVirtualTableVariantAL)
                 {
-                    Caption = 'Get RecordID';
-                    ToolTip = 'Get RecordID for current record';
+                    Caption = 'Create GetSystemVirtualTableVariant AL';
+                    ToolTip = 'Create AL for GetSystemVirtualTableVariant()';
                     Promoted = true;
                     PromotedIsBig = true;
                     PromotedOnly = true;

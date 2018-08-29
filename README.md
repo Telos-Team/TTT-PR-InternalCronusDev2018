@@ -29,6 +29,7 @@
 | Functions [External]
 | Labels ctr. TextContants
 | Dates: yyyymmddD
+| CodeAnalysis | Use either settings.json or workspace file
 
 ### Links:
 | Name | Link | Comment |

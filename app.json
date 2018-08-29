@@ -20,8 +20,8 @@
     "from": 50000,
     "to": 59999
   },
-  "target": "Internal",
   "target": "Extension",
+  "target": "Internal",
   "features": "TranslationFile",
   "showMyCode": false,
   "locale" : "W1"

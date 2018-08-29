@@ -135,6 +135,7 @@ codeunit 50007 "TTTPRObjectManagement"
 
         loctmprecAllObjWithCaption.FindSet;
         repeat
+        
             loctxtSafeObjectName := DelChr(loctmprecAllObjWithCaption."Object Name", '=', ' -.');
         loctbResult.AppendLine(
                 strsubstno('        locrec%1 : Record "%2";', loctxtSafeObjectName, loctmprecAllObjWithCaption."Object Name"));
