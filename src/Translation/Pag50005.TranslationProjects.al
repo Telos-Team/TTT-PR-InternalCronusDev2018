@@ -34,8 +34,10 @@ page 50005 TTTPRTranslationProjects
         {
             action(ActionName)
             {
+                Image = SuggestNumber;
                 trigger OnAction();
                 begin
+                    Message('');
                 end;
             }
         }

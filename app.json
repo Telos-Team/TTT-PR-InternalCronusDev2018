@@ -21,8 +21,6 @@
     "to": 59999
   },
   "target": "Extension",
-  "target": "Internal",
-  "features": "TranslationFile",
-  "showMyCode": false,
-  "locale" : "W1"
+  "features": ["TranslationFile"],
+  "showMyCode": false
 }

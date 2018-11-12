@@ -17,7 +17,7 @@ codeunit 50006 TTTPRExcelManagement
         locbooOK: Boolean;
     begin
         locbooOK := LoadClientExcel(locrecExcelBuffer);
-        Message('%1, %2', locbooOK, locrecExcelBuffer.Count);
+        Message('%1, %2', locbooOK, locrecExcelBuffer.Count());
     end;
 
     local procedure LoadClientExcel(var parvarrecExcelBuffer: Record "Excel Buffer"): Boolean;

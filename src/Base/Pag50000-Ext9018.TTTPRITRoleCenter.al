@@ -14,6 +14,7 @@ pageextension 50000 "TTTPR IT Role Center" extends "Administrator Role Center"
                 ApplicationArea = All;
                 Caption = 'Show Object Runner';
                 ToolTip = 'Show the Object Runner List';
+                Image = SuggestNumber;
                 RunObject = Page "TTTPRObjectRunnerList";
             }
         }

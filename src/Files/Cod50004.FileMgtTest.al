@@ -13,10 +13,10 @@ codeunit 50004 TTTPRFileMgtTest
 
     local procedure TestorUploadIntoStream();
     var
-        loccuFileMgt: Codeunit "File Management";
-        loctxtFilename: Text;
+        //loccuFileMgt: Codeunit "File Management";
+        //loctxtFilename: Text;
         loctxtClientFilename: Text;
-        loctxtClientFoldername: Text;
+        //loctxtClientFoldername: Text;
         locstrmIn: InStream;
         locbooOK: Boolean;
     begin
@@ -30,7 +30,7 @@ codeunit 50004 TTTPRFileMgtTest
         locrecTempBlob: Record TempBlob;
         locstrmIn: InStream;
         locstrmOut: OutStream;
-        loctxtClientFilename: Text;
+        //loctxtClientFilename: Text;
         loctxtContent: Text;
     begin
         locrecTempBlob.Blob.Import('c:\Data\kk.txt');
@@ -39,7 +39,7 @@ codeunit 50004 TTTPRFileMgtTest
         message('%1', loctxtContent);
         CopyStream(locstrmOut, locstrmIn);
         locrecTempBlob.CalcFields(blob);
-        message('HasValue: %1', locrecTempBlob.Blob.HasValue);
+        message('HasValue: %1', locrecTempBlob.Blob.HasValue());
     end;
 
     local procedure TestorImportBlobStream();
@@ -56,6 +56,6 @@ codeunit 50004 TTTPRFileMgtTest
         message('%1', loctxtContent);
         CopyStream(locstrmOut, locstrmIn);
         locrecTempBlob.CalcFields(blob);
-        message('HasValue: %1', locrecTempBlob.Blob.HasValue);
+        message('HasValue: %1', locrecTempBlob.Blob.HasValue());
     end;
 }

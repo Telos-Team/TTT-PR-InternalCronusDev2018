@@ -34,18 +34,18 @@ codeunit 50007 "TTTPRObjectManagement"
         loctmprecPermission: Record "Permission" temporary;
     begin
         case parintTableNo of
-            database::Object :
+            database::Object:
                 exit(false);
-        database::"Permission Set" :
+            database::"Permission Set":
                 if parbooTemporay then
-            parvarvarTable := loctmprecPermissionSet
-        else
-            parvarvarTable := locrecPermissionSet;
-        database::"Permission" :
+                    parvarvarTable := loctmprecPermissionSet
+                else
+                    parvarvarTable := locrecPermissionSet;
+            database::"Permission":
                 if parbooTemporay then
-            parvarvarTable := loctmprecPermission
-        else
-            parvarvarTable := locrecPermission;
+                    parvarvarTable := loctmprecPermission
+                else
+                    parvarvarTable := locrecPermission;
         end;
     end;
 
@@ -53,8 +53,8 @@ codeunit 50007 "TTTPRObjectManagement"
     var
         locrecAllObjWithCaption: Record AllObjWithCaption;
         loctmprecAllObjWithCaption: Record AllObjWithCaption temporary;
-        loctbResult: TextBuilder;
         locrecTempBlob: Record TempBlob temporary;
+        loctbResult: TextBuilder;
         locstrmIn: InStream;
         locstrmOut: OutStream;
         loctxtClientFilename: Text;
@@ -63,9 +63,9 @@ codeunit 50007 "TTTPRObjectManagement"
         locrecAllObjWithCaption.SetRange("Object Type", locrecAllObjWithCaption."Object Type"::Table);
         locrecAllObjWithCaption.FilterGroup(0);
         locrecAllObjWithCaption.SetFilter("Object ID", '%1..', 2000000000);
-        locrecAllObjWithCaption.FindSet;
+        locrecAllObjWithCaption.FindSet();
         repeat
-            if not(locrecAllObjWithCaption."Object ID" in [
+            if not (locrecAllObjWithCaption."Object ID" in [
                 Database::Object,
                 Database::Drive,
                 Database::"File",
@@ -123,25 +123,25 @@ codeunit 50007 "TTTPRObjectManagement"
                 Database::"Page Documentation",
                 Database::"Webhook Subscription"
             ]) then begin
-            loctmprecAllObjWithCaption := locrecAllObjWithCaption;
-            loctmprecAllObjWithCaption.Insert(false);
-        end;
-        until locrecAllObjWithCaption.next = 0;
+                loctmprecAllObjWithCaption := locrecAllObjWithCaption;
+                loctmprecAllObjWithCaption.Insert(false);
+            end;
+        until locrecAllObjWithCaption.Next() = 0;
 
         loctbResult.AppendLine(
             '    procedure GetSystemVirtualTableVariant(parintTableNo : Integer; parbooTemporay : Boolean; var parvarvarTable : Variant) : Boolean;');
         loctbResult.AppendLine(
             '    var');
 
-        loctmprecAllObjWithCaption.FindSet;
+        loctmprecAllObjWithCaption.FindSet();
         repeat
-        
+
             loctxtSafeObjectName := DelChr(loctmprecAllObjWithCaption."Object Name", '=', ' -.');
-        loctbResult.AppendLine(
-                strsubstno('        locrec%1 : Record "%2";', loctxtSafeObjectName, loctmprecAllObjWithCaption."Object Name"));
-        loctbResult.AppendLine(
-                strsubstno('        loctmprec%1 : Record "%2" temporary;', loctxtSafeObjectName, loctmprecAllObjWithCaption."Object Name"));
-        until loctmprecAllObjWithCaption.next = 0;
+            loctbResult.AppendLine(
+                    strsubstno('        locrec%1 : Record "%2";', loctxtSafeObjectName, loctmprecAllObjWithCaption."Object Name"));
+            loctbResult.AppendLine(
+                    strsubstno('        loctmprec%1 : Record "%2" temporary;', loctxtSafeObjectName, loctmprecAllObjWithCaption."Object Name"));
+        until loctmprecAllObjWithCaption.Next() = 0;
 
         loctbResult.AppendLine('    begin');
         loctbResult.AppendLine('        Clear(parvarvarTable);');
@@ -149,20 +149,20 @@ codeunit 50007 "TTTPRObjectManagement"
         loctbResult.AppendLine('            database::Object :');
         loctbResult.AppendLine('                exit(false);');
 
-        loctmprecAllObjWithCaption.FindSet;
+        loctmprecAllObjWithCaption.FindSet();
         repeat
             loctxtSafeObjectName := DelChr(loctmprecAllObjWithCaption."Object Name", '=', ' -.');
-        loctbResult.AppendLine(
-                StrSubstNo('            database::"%1" :', loctmprecAllObjWithCaption."Object Name"));
-        loctbResult.AppendLine(
-                StrSubstNo('                if parbooTemporay then'));
-        loctbResult.AppendLine(
-                StrSubstNo('                    parvarvarTable := loctmprec%1', loctxtSafeObjectName));
-        loctbResult.AppendLine(
-                StrSubstNo('                else'));
-        loctbResult.AppendLine(
-                StrSubstNo('                    parvarvarTable := locrec%1;', loctxtSafeObjectName));
-        until loctmprecAllObjWithCaption.next = 0;
+            loctbResult.AppendLine(
+                    StrSubstNo('            database::"%1" :', loctmprecAllObjWithCaption."Object Name"));
+            loctbResult.AppendLine(
+                    StrSubstNo('                if parbooTemporay then'));
+            loctbResult.AppendLine(
+                    StrSubstNo('                    parvarvarTable := loctmprec%1', loctxtSafeObjectName));
+            loctbResult.AppendLine(
+                    StrSubstNo('                else'));
+            loctbResult.AppendLine(
+                    StrSubstNo('                    parvarvarTable := locrec%1;', loctxtSafeObjectName));
+        until loctmprecAllObjWithCaption.Next() = 0;
 
         loctbResult.AppendLine('        end;');
         loctbResult.AppendLine('        exit(parvarvarTable.IsRecord);');
@@ -277,250 +277,250 @@ codeunit 50007 "TTTPRObjectManagement"
     begin
         Clear(parvarvarTable);
         case parintTableNo of
-            database::Object :
+            database::Object:
                 exit(false);
-        database::"Permission Set" :
+            database::"Permission Set":
                 if parbooTemporay then
-            parvarvarTable := loctmprecPermissionSet
-        else
-            parvarvarTable := locrecPermissionSet;
-        database::"Permission" :
+                    parvarvarTable := loctmprecPermissionSet
+                else
+                    parvarvarTable := locrecPermissionSet;
+            database::"Permission":
                 if parbooTemporay then
-            parvarvarTable := loctmprecPermission
-        else
-            parvarvarTable := locrecPermission;
-        database::"Company" :
+                    parvarvarTable := loctmprecPermission
+                else
+                    parvarvarTable := locrecPermission;
+            database::"Company":
                 if parbooTemporay then
-            parvarvarTable := loctmprecCompany
-        else
-            parvarvarTable := locrecCompany;
-        database::"Date" :
+                    parvarvarTable := loctmprecCompany
+                else
+                    parvarvarTable := locrecCompany;
+            database::"Date":
                 if parbooTemporay then
-            parvarvarTable := loctmprecDate
-        else
-            parvarvarTable := locrecDate;
-        database::"Session" :
+                    parvarvarTable := loctmprecDate
+                else
+                    parvarvarTable := locrecDate;
+            database::"Session":
                 if parbooTemporay then
-            parvarvarTable := loctmprecSession
-        else
-            parvarvarTable := locrecSession;
-        database::"Integer" :
+                    parvarvarTable := loctmprecSession
+                else
+                    parvarvarTable := locrecSession;
+            database::"Integer":
                 if parbooTemporay then
-            parvarvarTable := loctmprecInteger
-        else
-            parvarvarTable := locrecInteger;
-        database::"AllObj" :
+                    parvarvarTable := loctmprecInteger
+                else
+                    parvarvarTable := locrecInteger;
+            database::"AllObj":
                 if parbooTemporay then
-            parvarvarTable := loctmprecAllObj
-        else
-            parvarvarTable := locrecAllObj;
-        database::"Field" :
+                    parvarvarTable := loctmprecAllObj
+                else
+                    parvarvarTable := locrecAllObj;
+            database::"Field":
                 if parbooTemporay then
-            parvarvarTable := loctmprecField
-        else
-            parvarvarTable := locrecField;
-        database::"License Permission" :
+                    parvarvarTable := loctmprecField
+                else
+                    parvarvarTable := locrecField;
+            database::"License Permission":
                 if parbooTemporay then
-            parvarvarTable := loctmprecLicensePermission
-        else
-            parvarvarTable := locrecLicensePermission;
-        database::"Windows Language" :
+                    parvarvarTable := loctmprecLicensePermission
+                else
+                    parvarvarTable := locrecLicensePermission;
+            database::"Windows Language":
                 if parbooTemporay then
-            parvarvarTable := loctmprecWindowsLanguage
-        else
-            parvarvarTable := locrecWindowsLanguage;
-        database::"Code Coverage" :
+                    parvarvarTable := loctmprecWindowsLanguage
+                else
+                    parvarvarTable := locrecWindowsLanguage;
+            database::"Code Coverage":
                 if parbooTemporay then
-            parvarvarTable := loctmprecCodeCoverage
-        else
-            parvarvarTable := locrecCodeCoverage;
-        database::"Access Control" :
+                    parvarvarTable := loctmprecCodeCoverage
+                else
+                    parvarvarTable := locrecCodeCoverage;
+            database::"Access Control":
                 if parbooTemporay then
-            parvarvarTable := loctmprecAccessControl
-        else
-            parvarvarTable := locrecAccessControl;
-        database::"AllObjWithCaption" :
+                    parvarvarTable := loctmprecAccessControl
+                else
+                    parvarvarTable := locrecAccessControl;
+            database::"AllObjWithCaption":
                 if parbooTemporay then
-            parvarvarTable := loctmprecAllObjWithCaption
-        else
-            parvarvarTable := locrecAllObjWithCaption;
-        database::"Key" :
+                    parvarvarTable := loctmprecAllObjWithCaption
+                else
+                    parvarvarTable := locrecAllObjWithCaption;
+            database::"Key":
                 if parbooTemporay then
-            parvarvarTable := loctmprecKey
-        else
-            parvarvarTable := locrecKey;
-        database::"User Default Style Sheet" :
+                    parvarvarTable := loctmprecKey
+                else
+                    parvarvarTable := locrecKey;
+            database::"User Default Style Sheet":
                 if parbooTemporay then
-            parvarvarTable := loctmprecUserDefaultStyleSheet
-        else
-            parvarvarTable := locrecUserDefaultStyleSheet;
-        database::"Record Link" :
+                    parvarvarTable := loctmprecUserDefaultStyleSheet
+                else
+                    parvarvarTable := locrecUserDefaultStyleSheet;
+            database::"Record Link":
                 if parbooTemporay then
-            parvarvarTable := loctmprecRecordLink
-        else
-            parvarvarTable := locrecRecordLink;
-        database::"Add-in" :
+                    parvarvarTable := loctmprecRecordLink
+                else
+                    parvarvarTable := locrecRecordLink;
+            database::"Add-in":
                 if parbooTemporay then
-            parvarvarTable := loctmprecAddin
-        else
-            parvarvarTable := locrecAddin;
-        database::"Profile" :
+                    parvarvarTable := loctmprecAddin
+                else
+                    parvarvarTable := locrecAddin;
+            database::"Profile":
                 if parbooTemporay then
-            parvarvarTable := loctmprecProfile
-        else
-            parvarvarTable := locrecProfile;
-        database::"User Personalization" :
+                    parvarvarTable := loctmprecProfile
+                else
+                    parvarvarTable := locrecProfile;
+            database::"User Personalization":
                 if parbooTemporay then
-            parvarvarTable := loctmprecUserPersonalization
-        else
-            parvarvarTable := locrecUserPersonalization;
-        database::"Profile Metadata" :
+                    parvarvarTable := loctmprecUserPersonalization
+                else
+                    parvarvarTable := locrecUserPersonalization;
+            database::"Profile Metadata":
                 if parbooTemporay then
-            parvarvarTable := loctmprecProfileMetadata
-        else
-            parvarvarTable := locrecProfileMetadata;
-        database::"User Metadata" :
+                    parvarvarTable := loctmprecProfileMetadata
+                else
+                    parvarvarTable := locrecProfileMetadata;
+            database::"User Metadata":
                 if parbooTemporay then
-            parvarvarTable := loctmprecUserMetadata
-        else
-            parvarvarTable := locrecUserMetadata;
-        database::"Chart" :
+                    parvarvarTable := loctmprecUserMetadata
+                else
+                    parvarvarTable := locrecUserMetadata;
+            database::"Chart":
                 if parbooTemporay then
-            parvarvarTable := loctmprecChart
-        else
-            parvarvarTable := locrecChart;
-        database::"Page Data Personalization" :
+                    parvarvarTable := loctmprecChart
+                else
+                    parvarvarTable := locrecChart;
+            database::"Page Data Personalization":
                 if parbooTemporay then
-            parvarvarTable := loctmprecPageDataPersonalization
-        else
-            parvarvarTable := locrecPageDataPersonalization;
-        database::"Debugger Watch" :
+                    parvarvarTable := loctmprecPageDataPersonalization
+                else
+                    parvarvarTable := locrecPageDataPersonalization;
+            database::"Debugger Watch":
                 if parbooTemporay then
-            parvarvarTable := loctmprecDebuggerWatch
-        else
-            parvarvarTable := locrecDebuggerWatch;
-        database::"Active Session" :
+                    parvarvarTable := loctmprecDebuggerWatch
+                else
+                    parvarvarTable := locrecDebuggerWatch;
+            database::"Active Session":
                 if parbooTemporay then
-            parvarvarTable := loctmprecActiveSession
-        else
-            parvarvarTable := locrecActiveSession;
-        database::"Session Event" :
+                    parvarvarTable := loctmprecActiveSession
+                else
+                    parvarvarTable := locrecActiveSession;
+            database::"Session Event":
                 if parbooTemporay then
-            parvarvarTable := loctmprecSessionEvent
-        else
-            parvarvarTable := locrecSessionEvent;
-        database::"User" :
+                    parvarvarTable := loctmprecSessionEvent
+                else
+                    parvarvarTable := locrecSessionEvent;
+            database::"User":
                 if parbooTemporay then
-            parvarvarTable := loctmprecUser
-        else
-            parvarvarTable := locrecUser;
-        database::"Table Metadata" :
+                    parvarvarTable := loctmprecUser
+                else
+                    parvarvarTable := locrecUser;
+            database::"Table Metadata":
                 if parbooTemporay then
-            parvarvarTable := loctmprecTableMetadata
-        else
-            parvarvarTable := locrecTableMetadata;
-        database::"CodeUnit Metadata" :
+                    parvarvarTable := loctmprecTableMetadata
+                else
+                    parvarvarTable := locrecTableMetadata;
+            database::"CodeUnit Metadata":
                 if parbooTemporay then
-            parvarvarTable := loctmprecCodeUnitMetadata
-        else
-            parvarvarTable := locrecCodeUnitMetadata;
-        database::"Page Metadata" :
+                    parvarvarTable := loctmprecCodeUnitMetadata
+                else
+                    parvarvarTable := locrecCodeUnitMetadata;
+            database::"Page Metadata":
                 if parbooTemporay then
-            parvarvarTable := loctmprecPageMetadata
-        else
-            parvarvarTable := locrecPageMetadata;
-        database::"Report Metadata" :
+                    parvarvarTable := loctmprecPageMetadata
+                else
+                    parvarvarTable := locrecPageMetadata;
+            database::"Report Metadata":
                 if parbooTemporay then
-            parvarvarTable := loctmprecReportMetadata
-        else
-            parvarvarTable := locrecReportMetadata;
-        database::"Query Metadata" :
+                    parvarvarTable := loctmprecReportMetadata
+                else
+                    parvarvarTable := locrecReportMetadata;
+            database::"Query Metadata":
                 if parbooTemporay then
-            parvarvarTable := loctmprecQueryMetadata
-        else
-            parvarvarTable := locrecQueryMetadata;
-        database::"NAV App Tenant App" :
+                    parvarvarTable := loctmprecQueryMetadata
+                else
+                    parvarvarTable := locrecQueryMetadata;
+            database::"NAV App Tenant App":
                 if parbooTemporay then
-            parvarvarTable := loctmprecNAVAppTenantApp
-        else
-            parvarvarTable := locrecNAVAppTenantApp;
-        database::"NAV App Installed App" :
+                    parvarvarTable := loctmprecNAVAppTenantApp
+                else
+                    parvarvarTable := locrecNAVAppTenantApp;
+            database::"NAV App Installed App":
                 if parbooTemporay then
-            parvarvarTable := loctmprecNAVAppInstalledApp
-        else
-            parvarvarTable := locrecNAVAppInstalledApp;
-        database::"Time Zone" :
+                    parvarvarTable := loctmprecNAVAppInstalledApp
+                else
+                    parvarvarTable := locrecNAVAppInstalledApp;
+            database::"Time Zone":
                 if parbooTemporay then
-            parvarvarTable := loctmprecTimeZone
-        else
-            parvarvarTable := locrecTimeZone;
-        database::"Tenant Permission Set" :
+                    parvarvarTable := loctmprecTimeZone
+                else
+                    parvarvarTable := locrecTimeZone;
+            database::"Tenant Permission Set":
                 if parbooTemporay then
-            parvarvarTable := loctmprecTenantPermissionSet
-        else
-            parvarvarTable := locrecTenantPermissionSet;
-        database::"Tenant Permission" :
+                    parvarvarTable := loctmprecTenantPermissionSet
+                else
+                    parvarvarTable := locrecTenantPermissionSet;
+            database::"Tenant Permission":
                 if parbooTemporay then
-            parvarvarTable := loctmprecTenantPermission
-        else
-            parvarvarTable := locrecTenantPermission;
-        database::"Tenant Web Service" :
+                    parvarvarTable := loctmprecTenantPermission
+                else
+                    parvarvarTable := locrecTenantPermission;
+            database::"Tenant Web Service":
                 if parbooTemporay then
-            parvarvarTable := loctmprecTenantWebService
-        else
-            parvarvarTable := locrecTenantWebService;
-        database::"NAV App Tenant Add-In" :
+                    parvarvarTable := loctmprecTenantWebService
+                else
+                    parvarvarTable := locrecTenantWebService;
+            database::"NAV App Tenant Add-In":
                 if parbooTemporay then
-            parvarvarTable := loctmprecNAVAppTenantAddIn
-        else
-            parvarvarTable := locrecNAVAppTenantAddIn;
-        database::"Scheduled Task" :
+                    parvarvarTable := loctmprecNAVAppTenantAddIn
+                else
+                    parvarvarTable := locrecNAVAppTenantAddIn;
+            database::"Scheduled Task":
                 if parbooTemporay then
-            parvarvarTable := loctmprecScheduledTask
-        else
-            parvarvarTable := locrecScheduledTask;
-        database::"All Profile" :
+                    parvarvarTable := loctmprecScheduledTask
+                else
+                    parvarvarTable := locrecScheduledTask;
+            database::"All Profile":
                 if parbooTemporay then
-            parvarvarTable := loctmprecAllProfile
-        else
-            parvarvarTable := locrecAllProfile;
-        database::"OData Edm Type" :
+                    parvarvarTable := loctmprecAllProfile
+                else
+                    parvarvarTable := locrecAllProfile;
+            database::"OData Edm Type":
                 if parbooTemporay then
-            parvarvarTable := loctmprecODataEdmType
-        else
-            parvarvarTable := locrecODataEdmType;
-        database::"Media Resources" :
+                    parvarvarTable := loctmprecODataEdmType
+                else
+                    parvarvarTable := locrecODataEdmType;
+            database::"Media Resources":
                 if parbooTemporay then
-            parvarvarTable := loctmprecMediaResources
-        else
-            parvarvarTable := locrecMediaResources;
-        database::"Tenant Media Set" :
+                    parvarvarTable := loctmprecMediaResources
+                else
+                    parvarvarTable := locrecMediaResources;
+            database::"Tenant Media Set":
                 if parbooTemporay then
-            parvarvarTable := loctmprecTenantMediaSet
-        else
-            parvarvarTable := locrecTenantMediaSet;
-        database::"Tenant Media" :
+                    parvarvarTable := loctmprecTenantMediaSet
+                else
+                    parvarvarTable := locrecTenantMediaSet;
+            database::"Tenant Media":
                 if parbooTemporay then
-            parvarvarTable := loctmprecTenantMedia
-        else
-            parvarvarTable := locrecTenantMedia;
-        database::"Tenant Media Thumbnails" :
+                    parvarvarTable := loctmprecTenantMedia
+                else
+                    parvarvarTable := locrecTenantMedia;
+            database::"Tenant Media Thumbnails":
                 if parbooTemporay then
-            parvarvarTable := loctmprecTenantMediaThumbnails
-        else
-            parvarvarTable := locrecTenantMediaThumbnails;
-        database::"Tenant License State" :
+                    parvarvarTable := loctmprecTenantMediaThumbnails
+                else
+                    parvarvarTable := locrecTenantMediaThumbnails;
+            database::"Tenant License State":
                 if parbooTemporay then
-            parvarvarTable := loctmprecTenantLicenseState
-        else
-            parvarvarTable := locrecTenantLicenseState;
-        database::"Object Options" :
+                    parvarvarTable := loctmprecTenantLicenseState
+                else
+                    parvarvarTable := locrecTenantLicenseState;
+            database::"Object Options":
                 if parbooTemporay then
-            parvarvarTable := loctmprecObjectOptions
-        else
-            parvarvarTable := locrecObjectOptions;
+                    parvarvarTable := loctmprecObjectOptions
+                else
+                    parvarvarTable := locrecObjectOptions;
         end;
-        exit(parvarvarTable.IsRecord);
+        exit(parvarvarTable.IsRecord());
     end;
 
 }

@@ -54,8 +54,10 @@ page 50006 TTTPRTranslationWorksheet
         {
             action(ActionName)
             {
+                Image = SuggestNumber;
                 trigger OnAction();
                 begin
+                    Message('');
                 end;
             }
         }

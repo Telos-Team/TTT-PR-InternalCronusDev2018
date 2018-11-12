@@ -36,6 +36,9 @@
 |:---- | :--- | :------ |
 | Signing | https://docs.microsoft.com/en-us/dynamics365/business-central/dev-itpro/developer/devenv-sign-extension | Mandatory for BC
 | Destructive table changes | https://github.com/Microsoft/AL/issues/1595 https://github.com/Microsoft/AL/issues/1499
+| CSV | https://demiliani.com/2018/08/20/dynamics-365-business-central-parsing-a-csv-file-using-csv-buffer/
+| Config package | https://demiliani.com/2018/08/22/dynamics-365-business-central-loading-configuration-packages-from-al/
+| Web service publication | https://demiliani.com/2018/09/05/dynamics-365-business-central-publishing-a-web-service-from-extensions/
 
 ## BC Limitations:
 | Limitation | Comment |

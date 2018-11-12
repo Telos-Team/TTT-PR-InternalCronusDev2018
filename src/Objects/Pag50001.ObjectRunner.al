@@ -66,6 +66,7 @@ page 50001 "TTTPRObjectRunnerList"
                 ApplicationArea = All;
                 Promoted = true;
                 PromotedCategory = Process;
+                Image = SuggestNumber;
                 PromotedIsBig = true;
                 trigger OnAction();
                 begin
@@ -80,6 +81,7 @@ page 50001 "TTTPRObjectRunnerList"
                 Promoted = true;
                 PromotedCategory = Process;
                 PromotedIsBig = true;
+                Image = SuggestNumber;
                 trigger OnAction();
                 begin
                     ShowFieldList();
@@ -97,6 +99,7 @@ page 50001 "TTTPRObjectRunnerList"
                     Promoted = true;
                     PromotedCategory = Category4;
                     PromotedIsBig = true;
+                    Image = SuggestNumber;
                     trigger OnAction();
                     begin
                         SetFilterNormal();
@@ -110,6 +113,7 @@ page 50001 "TTTPRObjectRunnerList"
                     Promoted = true;
                     PromotedCategory = Category4;
                     PromotedIsBig = true;
+                    Image = SuggestNumber;
                     trigger OnAction();
                     begin
                         SetFilterDev();
@@ -123,6 +127,7 @@ page 50001 "TTTPRObjectRunnerList"
                     Promoted = true;
                     PromotedCategory = Category4;
                     PromotedIsBig = true;
+                    Image = SuggestNumber;
                     trigger OnAction();
                     begin
                         SetFilterSysVirt();
@@ -150,7 +155,7 @@ page 50001 "TTTPRObjectRunnerList"
 
     var
         recObjectTypeSelector: Record AllObjWithCaption;
-        optObjectTypeSelector: Option " ", TableData, Table, , Report, , Codeunit, XmlPort, MenuSuite, Page, Query, System, FieldNumber;
+        optObjectTypeSelector: Option " ",TableData,Table,,Report,,Codeunit,XmlPort,MenuSuite,Page,Query,System,FieldNumber;
 
     trigger OnOpenPage();
     begin

@@ -15,19 +15,19 @@ codeunit 50003 TTTPRXmlManagement
     begin
         locbooOK := LoadClientXml(locxmlDoc);
         // Message('%1', format(xmlDoc));
-        Message('LoadXml:\%1, %2', locbooOK, locxmlDoc.GetChildNodes.Count);
+        Message('LoadXml:\%1, %2', locbooOK, locxmlDoc.GetChildNodes().Count());
     end;
 
     local procedure LoadClientXml(var parvarxmlDoc: XmlDocument): Boolean;
     var
-        loclblDialogTitle: Label 'Please select XML file', Comment = 'This is the title shown on the upload dialog';
-        loclblFromFilter: Label '', Comment = 'This is the filter used when selecting file to upload';
+        loclblDialogTitleLbl: Label 'Please select XML file', Comment = 'This is the title shown on the upload dialog';
+        loclblFromFilterLbl: Label '', Comment = 'This is the filter used when selecting file to upload';
         loctxtFromFolder: Text;
         loctxtClientFilename: Text;
         locstrmXml: InStream;
     begin
         loctxtClientFilename := '';
-        if not UploadIntoStream(loclblDialogTitle, loctxtFromFolder, loclblFromFilter, loctxtClientFilename, locstrmXml) then
+        if not UploadIntoStream(loclblDialogTitleLbl, loctxtFromFolder, loclblFromFilterLbl, loctxtClientFilename, locstrmXml) then
             exit;
         if not XmlDocument.ReadFrom(locstrmXml, parvarxmlDoc) then
             exit;
@@ -41,7 +41,7 @@ codeunit 50003 TTTPRXmlManagement
         loctxtXml: Text;
     begin
         locbooOK := CreateXml(locxmlDoc);
-        Message('CreateXml:\%1, %2', locbooOK, locxmlDoc.GetChildNodes.Count);
+        Message('CreateXml:\%1, %2', locbooOK, locxmlDoc.GetChildNodes().Count());
         if locxmlDoc.WriteTo(loctxtXml) then
             message('%1', loctxtXml);
     end;
@@ -50,7 +50,7 @@ codeunit 50003 TTTPRXmlManagement
     var
         locxmlRoot: XmlElement;
         locxmlAttribute: XmlAttribute;
-        locxmlAttributeCollection: XmlAttributeCollection;
+        //locxmlAttributeCollection: XmlAttributeCollection;
         locxmlCData: XmlCData;
         locxmlComment: XmlComment;
         locxmlDecl: XmlDeclaration;
@@ -58,14 +58,14 @@ codeunit 50003 TTTPRXmlManagement
         locxmlElem: XmlElement;
         locxmlElemText: XmlElement;
         locxmlElemAttrib: XmlElement;
-        locxmlNamespaceManager: XmlNamespaceManager;
+        //locxmlNamespaceManager: XmlNamespaceManager;
         locxmlNameTable: XmlNameTable;
-        locxmlNode: XmlNode;
-        locxmlNodeList: XmlNodeList;
+        //locxmlNode: XmlNode;
+        //locxmlNodeList: XmlNodeList;
         locxmlProcessingInstruction: XmlProcessingInstruction;
-        locxmlReadOptions: XmlReadOptions;
+        //locxmlReadOptions: XmlReadOptions;
         locxmlText: XmlText;
-        locxmlWriteOptions: XmlWriteOptions;
+        //locxmlWriteOptions: XmlWriteOptions;
     begin
         clear(parvarxmlDoc);
 
@@ -120,7 +120,7 @@ codeunit 50003 TTTPRXmlManagement
         locxmlElemAttrib := XmlElement.Create('AttributeNode', '', 'Value');
         locxmlAttribute := XmlAttribute.Create('MyAttribute', 'AttributeValue');
         locxmlElemAttrib.Add(locxmlAttribute);
-        locxmlElemAttrib.Attributes.Set('MyAttribute2', 'AttributeValue');
+        locxmlElemAttrib.Attributes().Set('MyAttribute2', 'AttributeValue');
         if not locxmlRoot.Add(locxmlElemAttrib) then
             exit(false);
 

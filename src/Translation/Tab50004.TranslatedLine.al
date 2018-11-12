@@ -19,7 +19,7 @@ table 50004 TTTPRTranslatedLine
         field(3; TargetLanguage; Text[10])
         {
             Caption = 'Target Language';
-            DataClassification = ToBeClassified;
+            DataClassification = CustomerContent;
         }
         field(4; TargetContent; Blob)
         {

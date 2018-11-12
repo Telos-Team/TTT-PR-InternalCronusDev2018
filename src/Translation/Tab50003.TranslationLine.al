@@ -40,6 +40,7 @@ table 50003 TTTPRTranslationLine
         {
             Caption = 'Max Length';
             BlankZero = true;
+            DataClassification = CustomerContent;
         }
         field(8; DeveloperNote; Text[250])
         {

@@ -13,12 +13,12 @@ table 50002 TTTPRTranslationProject
         field(2; Description; Code[50])
         {
             Caption = 'Description';
-            DataClassification = ToBeClassified;
+            DataClassification = SystemMetadata;
         }
         field(3; SourceLanguage; Text[10])
         {
             Caption = 'Source Language';
-            DataClassification = ToBeClassified;
+            DataClassification = SystemMetadata;
         }
     }
 

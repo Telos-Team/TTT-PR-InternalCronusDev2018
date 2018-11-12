@@ -15,7 +15,7 @@ codeunit 50008 TTTPRAzureFunctionsSimple
     var
     local procedure TestSimpleHelloWorld();
     var
-        loclblUrl: label 'https://tttpr-functionapp.azurewebsites.net/api/HelloWorld';
+        loclblUrlLbl: label 'https://tttpr-functionapp.azurewebsites.net/api/HelloWorld';
         lochttpContent: HttpContent;
         lochttpClient: HttpClient;
         lochttpResponse: HttpResponseMessage;
@@ -32,7 +32,7 @@ codeunit 50008 TTTPRAzureFunctionsSimple
         lochttpContent.GetHeaders(lochttpHeaders);
         lochttpHeaders.Remove('content-type');
         lochttpHeaders.Add('content-type', 'application/json');
-        locbooPostResult := lochttpClient.Post(loclblUrl, lochttpContent, lochttpResponse);
+        locbooPostResult := lochttpClient.Post(loclblUrlLbl, lochttpContent, lochttpResponse);
         lochttpContent := lochttpResponse.Content();
         locbooReadResult := lochttpContent.ReadAs(loctxtReturnValue);
         locbooPostResult := not locbooPostResult;

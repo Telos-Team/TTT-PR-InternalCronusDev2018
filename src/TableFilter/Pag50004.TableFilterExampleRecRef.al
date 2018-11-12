@@ -50,7 +50,7 @@ page 50004 "TTTPRTableFilterExampleRecRef"
                         locrecTableFilter.FilterGroup(0);
                         locpagTableFilter.SetTableView(locrecTableFilter);
                         locpagTableFilter.SetSourceTable(Format(FilterString), ObjectID, ObjectName);
-                        if locpagTableFilter.RunModal = Action::OK then
+                        if locpagTableFilter.RunModal() = Action::OK then
                             Evaluate(FilterString, locpagTableFilter.CreateTextTableFilter(false));
                     end;
                 }
@@ -67,8 +67,10 @@ page 50004 "TTTPRTableFilterExampleRecRef"
         {
             action(ActionName)
             {
+                Image = SuggestNumber;
                 trigger OnAction();
                 begin
+                    Message('');
                 end;
             }
         }
