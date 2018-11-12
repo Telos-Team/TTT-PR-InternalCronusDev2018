@@ -40,6 +40,7 @@
 | Config package | https://demiliani.com/2018/08/22/dynamics-365-business-central-loading-configuration-packages-from-al/
 | Web service publication | https://demiliani.com/2018/09/05/dynamics-365-business-central-publishing-a-web-service-from-extensions/
 
+
 ## BC Limitations:
 | Limitation | Comment |
 | :--------- | :------ |

@@ -178,6 +178,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit TTTPRAzureFunctionsSimple - Method TestSimpleHelloWorld - NamedType loclblUrlLbl</note>
         </trans-unit>
+        <trans-unit id="Codeunit 1219133964 - Method 190711088 - NamedType 3268322187" size-unit="char" translate="yes" xml:space="preserve">
+          <source>%1 (%2)</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit TTTCoreLicenseStateWrapper - Method GetLicenseStateDescription - NamedType loclblDescLbl</note>
+        </trans-unit>
         <trans-unit id="Codeunit 1455871752 - Method 2756137458 - NamedType 2245926172" size-unit="char" translate="yes" xml:space="preserve">
           <source>Please select XML file</source>
           <note from="Developer" annotates="general" priority="2">This is the title shown on the upload dialog</note>
